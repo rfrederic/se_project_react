@@ -1,0 +1,39 @@
+.card {
+  border-radius: 10px;
+  border: 8px solid transparent;
+  width: 323px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card__image {
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+}
+
+.card__name {
+  position: absolute;
+  top: 5px;
+  background-color: #fff;
+  height: 24px;
+  margin: 0;
+  font-family: "Cabinet Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 4px;
+  width: 72px;
+}
+.modal__content modal__content_type_image {
+  width: 498px;
+  height: 610px;
+  top: 106px;
+  left: 471px;
+  angle: 0 deg;
+  opacity: 1;
+  border-radius: 16px;
+  visibility: hidden;
+}

@@ -1,0 +1,48 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+.DS_Store
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Fonts (prevent accidental large file additions)
+*.ttf
+*.otf
+*.woff
+*.woff2
+
+# Images over time
+*.psd
+*.ai
+*.svg
+
+# Mac system files
+.DS_Store
+
+# Backup files
+*.bak
+*.tmp
+*.swp
+
+# Environment files
+.env
+.env.*

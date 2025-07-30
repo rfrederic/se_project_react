@@ -1,0 +1,29 @@
+.cards__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  gap: 21px;
+}
+
+.cards__text {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 18px;
+  color: #333;
+}
+
+@media screen and (max-width: 768px) {
+  .cards__list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .cards__list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
