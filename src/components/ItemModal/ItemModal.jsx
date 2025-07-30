@@ -1,4 +1,4 @@
-import "./Itemmodal.css";
+import "./ItemModal.css";
 import close__btn from "../../assets/close.svg";
 
 function ItemModal({ activeModal, onClose, card }) {
