@@ -24,16 +24,10 @@ dist-ssr
 *.sln
 *.sw?
 
-# Fonts (prevent accidental large file additions)
-*.ttf
-*.otf
-*.woff
-*.woff2
-
 # Images over time
 *.psd
 *.ai
-*.svg
+
 
 # Mac system files
 .DS_Store
