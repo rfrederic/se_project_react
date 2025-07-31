@@ -1,22 +1,29 @@
 import { useEffect, useState } from "react";
 
 import "./App.css";
-import { coordinates, APIkey } from "../../utils/constants";
+import {
+  coordinates,
+  APIkey,
+  defaultClothingItems,
+} from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import "../../vendor/normalize.css";
 import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
-import { getWeather, filterweatherData } from "../../utils/weatherApi";
+import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: "",
-    temp: { f: 999, c: 999, city: "" },
+    temp: { F: 999, city: "" },
   });
+
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+
+  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -27,14 +34,14 @@ function App() {
     setActiveModal("add-garment");
   };
 
-  const closeActiveModal = (card) => {
+  const closeActiveModal = () => {
     setActiveModal("");
   };
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
-        const filteredData = filterweatherData(data);
+        const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
       })
       .catch(console.error);
@@ -44,7 +51,11 @@ function App() {
     <div className="page">
       <div className="page__content">
         <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-        <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+        <Main
+          weatherData={weatherData}
+          handleCardClick={handleCardClick}
+          items={clothingItems}
+        />
         <Footer />
         <ModalWithForm
           title="New garment"
@@ -53,7 +64,7 @@ function App() {
           onClose={closeActiveModal}
         >
           <label htmlFor="name" className="modal__label">
-            Name{""}
+            Name
             <input
               type="text"
               className="modal__input"
@@ -62,11 +73,11 @@ function App() {
             />
           </label>
           <label htmlFor="imageUrl" className="modal__label">
-            Image{""}
+            Image
             <input
               type="url"
               className="modal__input"
-              id="image"
+              id="imageUrl"
               placeholder="Image URL"
             />
           </label>
@@ -76,23 +87,39 @@ function App() {
               htmlFor="hot"
               className="modal__label modal__label_type_radio"
             >
-              <input id="hot" type="radio" className="modal__radio_input" />
+              <input
+                id="hot"
+                type="radio"
+                className="modal__radio_input"
+                name="weather"
+                value="hot"
+              />
               Hot
             </label>
-
             <label
               htmlFor="cold"
               className="modal__label modal__label_type_radio"
             >
-              <input id="cold" type="radio" className="modal__radio_input" />
+              <input
+                id="cold"
+                type="radio"
+                className="modal__radio_input"
+                name="weather"
+                value="cold"
+              />
               Cold
             </label>
-
             <label
               htmlFor="warm"
               className="modal__label modal__label_type_radio"
             >
-              <input id="warm" type="radio" className="modal__radio_input" />
+              <input
+                id="warm"
+                type="radio"
+                className="modal__radio_input"
+                name="weather"
+                value="warm"
+              />
               Warm
             </label>
           </fieldset>

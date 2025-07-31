@@ -27,13 +27,3 @@
   border-radius: 4px;
   width: 72px;
 }
-.modal__content modal__content_type_image {
-  width: 498px;
-  height: 610px;
-  top: 106px;
-  left: 471px;
-  angle: 0 deg;
-  opacity: 1;
-  border-radius: 16px;
-  visibility: hidden;
-}
