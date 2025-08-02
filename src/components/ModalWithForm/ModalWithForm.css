@@ -29,6 +29,8 @@
   border-radius: 8px;
 }
 .modal__close-btn {
+  width: 20px;
+  height: 20px;
   position: absolute;
   top: 20px;
   right: 28px;
@@ -52,6 +54,8 @@
 
 .modal__radio-buttons {
   border: none;
+
+  gap: 8px;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -79,9 +83,11 @@
 }
 .modal__radio_input {
   accent-color: #000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .modal__submit-btn {
-  padding: 12px 20px;
   background-color: #000;
   color: #fff;
   border: none;
@@ -91,6 +97,13 @@
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 124px;
+  height: 36px;
+  angle: 0 deg;
+  opacity: 1;
+  gap: 8px;
+  border-radius: 4px;
+  padding: 8px 16px;
 }
 
 .modal__submit-btn:hover {

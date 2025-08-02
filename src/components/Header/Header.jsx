@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Header.css";
 import logo from "../../assets/logo.svg";
 import avatar from "../../assets/bre_avtar.png";
@@ -47,6 +47,14 @@ function Header({ handleAddClick, weatherData }) {
       </button>
 
       <nav className={`header__nav ${isMobileMenuOpened ? "open" : ""}`}>
+        {" "}
+        <button
+          className="header__close-btn"
+          onClick={toggleMobileMenu}
+          aria-label="Close menu"
+        >
+          <img src={close__btn} alt="close menu" />
+        </button>
         <ul className="header__list">
           <li className="header__item mobile-only">
             <a href="/">Home</a>
@@ -58,13 +66,6 @@ function Header({ handleAddClick, weatherData }) {
             <a href="/items">Items</a>
           </li>
         </ul>
-        <button
-          className="header__close-btn"
-          onClick={toggleMobileMenu}
-          aria-label="Close menu"
-        >
-          <img src={close__btn} alt="close menu" />
-        </button>
       </nav>
     </header>
   );
