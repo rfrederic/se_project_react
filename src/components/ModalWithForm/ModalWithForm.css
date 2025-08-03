@@ -10,7 +10,7 @@
   align-items: center;
   visibility: hidden;
 }
-.modal__opened {
+.modal_opened {
   visibility: visible;
 }
 .modal__title {
@@ -53,12 +53,11 @@
 }
 
 .modal__radio-buttons {
+  flex-direction: column;
   border: none;
-
   gap: 8px;
   padding: 0;
   display: flex;
-  flex-direction: column;
   gap: 8px;
   font-size: 14px;
   font-family: "Cabinet Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -66,6 +65,7 @@
 
 .modal__input {
   display: block;
+  flex-direction: column;
   padding: 8px 0;
   font-size: 14px;
   font-family: "Cabinet Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
