@@ -18,7 +18,6 @@
   max-width: 400px;
   width: 498px;
   height: 610px;
-  angle: 0 deg;
   opacity: 1;
   top: 106px;
   position: absolute;
@@ -37,7 +36,6 @@
 .modal__caption {
   width: 36px;
   height: 24;
-  angle: 0 deg;
   opacity: 1;
   margin: 0;
   font-size: 20px;
@@ -48,7 +46,6 @@
 .modal__weather {
   width: 115px;
   height: 24px;
-  angle: 0 deg;
   opacity: 1;
   top: 660px;
   left: 503px;

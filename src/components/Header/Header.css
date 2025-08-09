@@ -32,8 +32,6 @@
   font-weight: 500;
   cursor: pointer;
 }
-Animal.prototype.say = function () {
-}
 
 .header__user-container {
   display: flex;
