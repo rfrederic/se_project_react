@@ -58,7 +58,6 @@
   gap: 8px;
   padding: 0;
   display: flex;
-  gap: 8px;
   font-size: 14px;
   font-family: "Cabinet Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -99,7 +98,6 @@
   transition: background-color 0.3s ease;
   width: 124px;
   height: 36px;
-  angle: 0 deg;
   opacity: 1;
   gap: 8px;
   border-radius: 4px;
