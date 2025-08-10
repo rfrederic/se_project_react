@@ -4,6 +4,7 @@ import logo from "../../assets/logo.svg";
 import avatar from "../../assets/bre_avtar.png";
 import close__btn from "../../assets/close.svg";
 import menu from "../../assets/menu.svg";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 function Header({ handleAddClick, weatherData }) {
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
@@ -24,7 +25,7 @@ function Header({ handleAddClick, weatherData }) {
       <p className="header__date-and-location">
         {currentDate}, {weatherData?.city}
       </p>
-
+      <ToggleSwitch />
       <button
         onClick={handleAddClick}
         type="button"
