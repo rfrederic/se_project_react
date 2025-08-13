@@ -26,67 +26,53 @@ function App() {
 
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const [clothingItems, setClothingItems] = useState([]);
+  const [clothingItems, setClothingItems] = useState(
+    process.env.NODE_ENV === "production" ? defaultClothingItems : []
+  );
   const [currentTemperatureUnit, setcurrentTemperatureUnit] = useState("F");
 
   const handleToggleSwitchChange = () => {
     setcurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
 
-  function handleCardClick(card) {
+  const handleCardClick = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
-  }
-
-  const handleAddClick = () => {
-    setActiveModal("add-garment");
   };
 
-  const closeActiveModal = () => {
-    setActiveModal("");
-  };
+  const handleAddClick = () => setActiveModal("add-garment");
+  const closeActiveModal = () => setActiveModal("");
 
   useEffect(() => {
     if (!activeModal) return;
-
-    const handleEscClose = (e) => {
-      if (e.key === "Escape") {
-        closeActiveModal();
-      }
-    };
-
+    const handleEscClose = (e) => e.key === "Escape" && closeActiveModal();
     document.addEventListener("keydown", handleEscClose);
-
-    return () => {
-      document.removeEventListener("keydown", handleEscClose);
-    };
+    return () => document.removeEventListener("keydown", handleEscClose);
   }, [activeModal]);
 
   const handleAddItemModalSubmit = ({ name, ImageUrl, weather }) => {
     const newId = Math.max(...clothingItems.map((item) => item._id)) + 1;
     setClothingItems([
-      { name, libk: ImageUrl, weather, newId },
+      { name, libk: ImageUrl, weather, _id: newId },
       ...clothingItems,
     ]);
     closeActiveModal();
   };
 
+  // Fetch weather
   useEffect(() => {
     getWeather(coordinates, APIkey)
-      .then((data) => {
-        const filteredData = filterWeatherData(data);
-        setWeatherData(filteredData);
-      })
+      .then((data) => setWeatherData(filterWeatherData(data)))
       .catch(console.error);
   }, []);
 
+  // Fetch clothing items only in development (local json-server)
   useEffect(() => {
-    getItems()
-      .then((data) => {
-        console.log(data);
-        setClothingItems(data.items || []);
-      })
-      .catch(console.error);
+    if (process.env.NODE_ENV !== "production") {
+      getItems()
+        .then((data) => setClothingItems(data.items || []))
+        .catch(console.error);
+    }
   }, []);
 
   return (
