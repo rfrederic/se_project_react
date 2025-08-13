@@ -72,6 +72,11 @@
   align-items: center;
 }
 
+.header__link {
+  text-decoration: none;
+  color: #333;
+}
+
 .header__list {
   display: flex;
   gap: 1rem;
