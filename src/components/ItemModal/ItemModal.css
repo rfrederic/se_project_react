@@ -11,26 +11,15 @@
   display: flex;
 }
 
-.modal__content_type_image {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 400px;
-  width: 498px;
-  height: 610px;
-  opacity: 1;
-  top: 106px;
-  position: absolute;
-}
-
 .modal__image {
   max-width: 100%;
   width: 498px;
   object-fit: contain;
+  border-radius: 8px;
 }
 
 .modal__footer {
-  padding-top: 12px;
+  padding: 12px;
 }
 
 .modal__caption {

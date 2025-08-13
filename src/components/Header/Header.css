@@ -21,10 +21,13 @@
   font-family: "Cabinet Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.header__toggle-switch-container {
+  margin-left: auto;
+}
+
 .header__add-clothes-btn {
   width: 116px;
   height: 24px;
-  margin-left: auto;
   border: none;
   background: none;
   font-family: "Cabinet Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;

@@ -1,0 +1,54 @@
+.clothes-section__sidebar {
+  display: flex;
+}
+
+.clothes__section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.clothes-section__sidebar {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.clothes__items {
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-family: "Cabinet Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+}
+
+.clothes__add-clothes-btn {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  width: 116px;
+  height: 24px;
+  border: none;
+  color: #00000099;
+  opacity: 60%;
+  background: none;
+  font-family: "Cabinet Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  font-style: Bold;
+  font-weight: 700;
+}
+
+.clothes-section__items {
+  display: grid;
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
