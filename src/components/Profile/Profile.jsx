@@ -2,18 +2,19 @@ import "./Profile.css";
 import SideBar from "../SideBar/SideBar";
 import ClothingSection from "../ClothesSection/ClothesSection";
 
-function Profile({ onCardClick }) {
+function Profile({ clothingItems, onCardClick }) {
   return (
-    <>
-      <div className="profile">
-        <section className="profile__sidebar">
-          <SideBar />
-        </section>
-        <section className="profile__clothing-items">
-          <ClothingSection onCardClick={onCardClick} />
-        </section>
-      </div>
-    </>
+    <div className="profile">
+      <section className="profile__sidebar">
+        <SideBar />
+      </section>
+      <section className="profile__clothing-items">
+        <ClothingSection
+          clothingItems={clothingItems}
+          onCardClick={onCardClick}
+        />
+      </section>
+    </div>
   );
 }
 

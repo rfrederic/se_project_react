@@ -58,15 +58,11 @@ function App() {
     ]);
     closeActiveModal();
   };
-
-  // Fetch weather
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => setWeatherData(filterWeatherData(data)))
       .catch(console.error);
   }, []);
-
-  // Fetch clothing items only in development (local json-server)
   useEffect(() => {
     if (process.env.NODE_ENV !== "production") {
       getItems()
