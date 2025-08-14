@@ -20,6 +20,7 @@
 
 .modal__footer {
   padding: 12px;
+  display: flex;
 }
 
 .modal__caption {
@@ -42,4 +43,19 @@
   font-size: 14px;
   color: #555;
   font-family: "Cabinet Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.modal__delete-btn {
+  background: transparent;
+  border: none;
+  color: #ff4d4f;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 12px;
+  transition: color 0.2s ease-in-out;
+}
+
+.modal__delete-btn:hover {
+  color: #d9363e;
 }

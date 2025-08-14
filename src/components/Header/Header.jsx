@@ -69,7 +69,7 @@ function Header({ handleAddClick, weatherData }) {
             <a href="/profile">Profile</a>
           </li>
           <li className="header__item mobile-only">
-            <a href="/items">Items</a>
+            <Link to="/items">Items</Link>
           </li>
         </ul>
       </nav>

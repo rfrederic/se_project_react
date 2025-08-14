@@ -29,10 +29,11 @@ function App() {
   const [clothingItems, setClothingItems] = useState(
     process.env.NODE_ENV === "production" ? defaultClothingItems : []
   );
-  const [currentTemperatureUnit, setcurrentTemperatureUnit] = useState("F");
+
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleToggleSwitchChange = () => {
-    setcurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
+    setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
 
   const handleCardClick = (card) => {
@@ -53,20 +54,24 @@ function App() {
   const handleAddItemModalSubmit = ({ name, ImageUrl, weather }) => {
     const newId = Math.max(...clothingItems.map((item) => item._id)) + 1;
     setClothingItems([
-      { name, libk: ImageUrl, weather, _id: newId },
+      { name, link: ImageUrl, weather, _id: newId },
       ...clothingItems,
     ]);
     closeActiveModal();
   };
+
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => setWeatherData(filterWeatherData(data)))
       .catch(console.error);
   }, []);
+
   useEffect(() => {
     if (process.env.NODE_ENV !== "production") {
       getItems()
-        .then((data) => setClothingItems(data.items || []))
+        .then((data) =>
+          setClothingItems(Array.isArray(data) ? data : data.items || [])
+        )
         .catch(console.error);
     }
   }, []);
@@ -78,10 +83,9 @@ function App() {
       <div className="page">
         <div className="page__content">
           <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-
           <Routes>
             <Route
-              path="/"
+              path="/items"
               element={
                 <Main
                   weatherData={weatherData}
@@ -96,17 +100,16 @@ function App() {
                 <Profile
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  handleAddClick={handleAddClick}
                 />
               }
             />
           </Routes>
-
           <Footer />
-
           <AddItemModal
             isOpen={activeModal === "add-garment"}
             onClose={closeActiveModal}
-            OnAddItemModalSubmit={handleAddItemModalSubmit}
+            onAddItemModalSubmit={handleAddItemModalSubmit}
           />
           <ItemModal
             isOpen={activeModal === "preview"}
