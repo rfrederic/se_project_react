@@ -1,11 +1,16 @@
 const baseUrl = "http://localhost:3001";
 
-export const getItems = async () => {
-  const res = await fetch(`${baseUrl}/items`);
+const checkResponse = async (res) => {
   if (!res.ok) {
-    throw new Error("Failed to fetch items");
+    const errorText = await res.text();
+    throw new Error(errorText || "API request failed");
   }
   return res.json();
+};
+
+export const getItems = async () => {
+  const res = await fetch(`${baseUrl}/items`);
+  return checkResponse(res);
 };
 
 export const addItem = async (itemData) => {
@@ -16,20 +21,12 @@ export const addItem = async (itemData) => {
     },
     body: JSON.stringify(itemData),
   });
-
-  if (!res.ok) {
-    throw new Error("Failed to add item");
-  }
-  return res.json();
+  return checkResponse(res);
 };
 
 export const deleteItem = async (id) => {
   const res = await fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
   });
-
-  if (!res.ok) {
-    throw new Error("Failed to delete item");
-  }
-  return res.json();
+  return checkResponse(res);
 };
