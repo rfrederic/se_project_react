@@ -1,6 +1,8 @@
 import "./SideBar.css";
 import avatar from "../../assets/bre_avtar.png";
 
+import React from "react";
+
 function SideBar() {
   return (
     <>

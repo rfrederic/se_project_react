@@ -46,9 +46,10 @@
 }
 
 .clothes-section__items {
-  display: grid;
+  display: flex;
   gap: 16px;
   list-style: none;
   padding: 0;
   margin: 0;
+  flex-wrap: wrap;
 }
