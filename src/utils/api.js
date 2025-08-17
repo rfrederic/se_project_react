@@ -1,9 +1,9 @@
 const baseUrl = "http://localhost:3001";
 
-const checkResponse = async (res) => {
+export const checkResponse = async (res) => {
   if (!res.ok) {
     const errorText = await res.text();
-    throw new Error(errorText || "API request failed");
+    throw new Error(errorText || `ERROR: ${res.status}`);
   }
   return res.json();
 };

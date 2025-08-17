@@ -5,12 +5,10 @@ import React from "react";
 
 function SideBar() {
   return (
-    <>
-      <div className="sidebar">
-        <img className="sidebar__avatar" src={avatar} alt="Default avatar" />
-        <p className="sidebar__username">Sabrina Frederic</p>
-      </div>
-    </>
+    <div className="sidebar">
+      <img className="sidebar__avatar" src={avatar} alt="Default avatar" />
+      <p className="sidebar__username">Sabrina Frederic</p>
+    </div>
   );
 }
 
