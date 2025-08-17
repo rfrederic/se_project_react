@@ -1,7 +1,7 @@
 import "./ItemModal.css";
 import close__btn from "../../assets/close.svg";
 
-function ItemModal({ isOpen, onClose, card, onDeleteClick }) {
+function ItemModal({ isOpen, onClose, card, onDelete }) {
   if (!isOpen) return null;
 
   return (

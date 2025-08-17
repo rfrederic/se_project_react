@@ -17,6 +17,7 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
 import { getItems, addItem, deleteItem } from "../../utils/api";
+import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -31,6 +32,8 @@ function App() {
   );
 
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+
+  const [deleteModal, setDeleteModal] = useState(null);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -127,7 +130,16 @@ function App() {
             isOpen={activeModal === "preview"}
             card={selectedCard}
             onClose={closeActiveModal}
-            onDelete={handleDeleteItem}
+            onDelete={(cardId) => setDeleteModal(cardId)}
+          />
+
+          <ConfirmDeleteModal
+            isOpen={!!deleteModal}
+            onClose={() => setDeleteModal(null)}
+            onConfirm={() => {
+              handleDeleteItem(deleteModal);
+              setDeleteModal(null);
+            }}
           />
         </div>
       </div>
