@@ -54,6 +54,7 @@
   cursor: pointer;
   padding: 8px 12px;
   transition: color 0.2s ease-in-out;
+  margin-left: auto;
 }
 
 .modal__delete-btn:hover {
