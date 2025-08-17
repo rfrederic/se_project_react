@@ -11,7 +11,7 @@ function ItemModal({ isOpen, onClose, card, onDeleteClick }) {
           <img src={close__btn} alt="Close icon" />
         </button>
 
-        <img src={card.link} alt={card.name} className="modal__image" />
+        <img src={card.imageUrl} alt={card.name} className="modal__image" />
 
         <div className="modal__footer">
           <h2 className="modal__caption">{card.name}</h2>
@@ -20,7 +20,7 @@ function ItemModal({ isOpen, onClose, card, onDeleteClick }) {
           <button
             type="button"
             className="modal__delete-btn"
-            onClick={() => onDeleteClick(card._id)}
+            onClick={() => onDelete(card._id)}
           >
             Delete Item
           </button>
