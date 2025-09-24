@@ -1,5 +1,5 @@
 import "./ItemCard.css";
-import Like_new from "../../assets/logo.svg";
+import LikeIcone from "../../assets/logo.svg";
 
 function ItemCard({ item, onCardClick, onCardLike, currentUser }) {
   const isLiked = item.likes?.some((id) => id === currentUser._id);
@@ -23,7 +23,7 @@ function ItemCard({ item, onCardClick, onCardLike, currentUser }) {
           className={`card__like-button ${isLiked ? "liked" : ""}`}
           onClick={handleLike}
         >
-          <img src={Like_new} alt="like-btn" className="card__like-button" />
+          <img src={LikeIcone} alt="like-btn" className="card__like-button" />
         </button>
       )}
     </li>

@@ -1,7 +1,3 @@
-.clothes-section__sidebar {
-  display: flex;
-}
-
 .clothes__section {
   display: flex;
   flex-direction: column;

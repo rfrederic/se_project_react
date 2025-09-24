@@ -1,7 +1,13 @@
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
 
-function ClothesSection({ onCardClick, onAddNewClick, clothingItems }) {
+function ClothesSection({
+  onCardClick,
+  onAddNewClick,
+  clothingItems,
+  onCardLike,
+  currentUser,
+}) {
   return (
     <div className="clothes__section">
       <div className="clothes-section__sidebar">
