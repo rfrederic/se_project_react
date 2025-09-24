@@ -7,7 +7,12 @@ import menu from "../../assets/menu.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({
+  handleAddClick,
+  weatherData,
+  onRegisterClick,
+  onLoginClick,
+}) {
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -28,9 +33,11 @@ function Header({ handleAddClick, weatherData }) {
       <p className="header__date-and-location">
         {currentDate}, {weatherData?.city}
       </p>
+
       <div className="header__toggle-switch-container">
         <ToggleSwitch />
       </div>
+
       <button
         onClick={handleAddClick}
         type="button"
@@ -38,12 +45,19 @@ function Header({ handleAddClick, weatherData }) {
       >
         + Add clothes
       </button>
+
+      <div className="header__auth-buttons">
+        <button onClick={onRegisterClick}>Register</button>
+        <button onClick={onLoginClick}>Login</button>
+      </div>
+
       <Link to="/profile" className="header__link">
         <div className="header__user-container">
           <p className="header__username">Sabrina Frederic</p>
           <img src={avatar} alt="Sabrina Frederic" className="header__avatar" />
         </div>
       </Link>
+
       <button
         className="header__burger"
         onClick={toggleMobileMenu}
@@ -53,7 +67,6 @@ function Header({ handleAddClick, weatherData }) {
       </button>
 
       <nav className={`header__nav ${isMobileMenuOpened ? "open" : ""}`}>
-        {" "}
         <button
           className="header__close-btn"
           onClick={toggleMobileMenu}
@@ -63,10 +76,10 @@ function Header({ handleAddClick, weatherData }) {
         </button>
         <ul className="header__list">
           <li className="header__item mobile-only">
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li className="header__item mobile-only">
-            <a href="/profile">Profile</a>
+            <Link to="/profile">Profile</Link>
           </li>
           <li className="header__item mobile-only">
             <Link to="/items">Items</Link>

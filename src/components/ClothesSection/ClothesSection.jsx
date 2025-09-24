@@ -12,7 +12,13 @@ function ClothesSection({ onCardClick, onAddNewClick, clothingItems }) {
       </div>
       <ul className="clothes-section__items">
         {clothingItems.map((item) => (
-          <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
+          <ItemCard
+            key={item._id}
+            item={item}
+            onCardClick={onCardClick}
+            onCardLike={onCardLike}
+            currentUser={currentUser}
+          />
         ))}
       </ul>
     </div>

@@ -28,3 +28,20 @@
   border-radius: 4px;
   width: 72px;
 }
+
+.card__like-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 18px;
+  border: 2px;
+  cursor: pointer;
+  z-index: 2;
+  transition: transform 0.2s ease, background-image 0.2s ease;
+}
+
+.card__like-button:hover {
+  transform: scale(1.1);
+  background-image: url("../../assets/Like_hover.svg");
+}

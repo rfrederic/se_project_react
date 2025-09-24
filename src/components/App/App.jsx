@@ -15,6 +15,9 @@ import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import RegisterModal from "./components/RegisterModal/RegisterModal";
+import LoginModal from "./components/LoginModal/LoginModal";
+
 import Profile from "../Profile/Profile";
 import { getItems, addItem, deleteItem } from "../../utils/api";
 import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal";
@@ -43,6 +46,30 @@ function App() {
   const handleCardClick = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
+  };
+
+  const handleCardLike = ({ id, isLiked }) => {
+    const token = localStorage.getItem("jwt");
+
+    if (!isLiked) {
+      api
+        .addCardLike(id, token)
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((item) => (item._id === id ? updatedCard : item))
+          );
+        })
+        .catch(console.error);
+    } else {
+      api
+        .removeCardLike(id, token)
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((item) => (item._id === id ? updatedCard : item))
+          );
+        })
+        .catch(console.error);
+    }
   };
 
   const handleAddClick = () => setActiveModal("add-garment");
@@ -119,7 +146,10 @@ function App() {
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
                   onAddNewClick={handleAddClick}
-                  handleAddClick={handleAddClick}
+                  currentUser={currentUser}
+                  onCardLike={handleCardLike}
+                  onEditProfileClick={() => setIsEditModalOpen(true)}
+                  onSignOutClick={handleSignOut}
                 />
               }
             />
@@ -135,6 +165,16 @@ function App() {
             card={selectedCard}
             onClose={closeActiveModal}
             onDelete={(cardId) => setDeleteModal(cardId)}
+          />
+
+          <RegisterModal
+            isOpen={activeModal === "register"}
+            onClose={() => setActiveModal("")}
+          />
+
+          <LoginModal
+            isOpen={activeModal === "login"}
+            onClose={() => setActiveModal("")}
           />
 
           <ConfirmDeleteModal

@@ -1,13 +1,25 @@
 import "./SideBar.css";
-import avatar from "../../assets/bre_avtar.png";
-
 import React from "react";
 
-function SideBar() {
+function SideBar({ currentUser, onEditProfileClick, onSignOutClick }) {
   return (
     <div className="sidebar">
-      <img className="sidebar__avatar" src={avatar} alt="Default avatar" />
-      <p className="sidebar__username">Sabrina Frederic</p>
+      <img
+        className="sidebar__avatar"
+        src={currentUser.avatar || "/assets/bre_avtar.png"}
+        alt={currentUser.name || "Default avatar"}
+      />
+      <p className="sidebar__username">
+        {currentUser.name || "Sabrina Frederic"}
+      </p>
+
+      <button className="sidebar__edit-btn" onClick={onEditProfileClick}>
+        Edit profile
+      </button>
+
+      <button className="sidebar__signout-btn" onClick={onSignOutClick}>
+        Sign out
+      </button>
     </div>
   );
 }
