@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import "./AddItemModal.css";
 import "./RegisterModal.css";
 
 function RegisterModal({ isOpen, onClose, onRegister }) {

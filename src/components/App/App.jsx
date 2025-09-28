@@ -22,6 +22,7 @@ import Profile from "../Profile/Profile";
 import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function App() {
   // Weather
