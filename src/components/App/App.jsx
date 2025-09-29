@@ -68,7 +68,8 @@ function App() {
   // Delete
   const [deleteModalId, setDeleteModalId] = useState(null);
   const handleDeleteItem = (itemId) => {
-    deleteItem(itemId)
+    api
+      .deleteItem(itemId)
       .then(() => {
         setClothingItems((prevItems) =>
           prevItems.filter((item) => item._id !== itemId)
@@ -105,7 +106,8 @@ function App() {
   // Add item
   const handleAddClick = () => setActiveModal("add-garment");
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-    addItem({ name, imageUrl, weather })
+    api
+      .addItem({ name, imageUrl, weather })
       .then((newItem) => {
         setClothingItems([newItem, ...clothingItems]);
         closeActiveModal();
@@ -127,7 +129,8 @@ function App() {
   // Load clothing items
   useEffect(() => {
     if (process.env.NODE_ENV !== "production") {
-      getItems()
+      api
+        .getItems()
         .then((data) =>
           setClothingItems(Array.isArray(data) ? data : data.items || [])
         )
@@ -171,7 +174,6 @@ function App() {
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
                     onCardLike={handleCardLike}
-                    currentUser={currentUser}
                   />
                 }
               />
@@ -193,7 +195,6 @@ function App() {
               />
             </Routes>
             <Footer />
-
             <AddItemModal
               isOpen={activeModal === "add-garment"}
               onClose={closeActiveModal}
