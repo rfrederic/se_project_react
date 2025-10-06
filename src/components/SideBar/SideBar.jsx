@@ -1,7 +1,9 @@
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./SideBar.css";
-import React from "react";
+import React, { useContext } from "react";
 
-function SideBar({ currentUser, onEditProfileClick, onSignOutClick }) {
+function SideBar({ onEditProfileClick, onSignOutClick }) {
+  const { currentUser } = useContext(CurrentUserContext);
   return (
     <div className="sidebar">
       <img

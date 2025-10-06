@@ -23,6 +23,7 @@ import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { authorize, checkToken, register } from "../../utils/auth";
 
 function App() {
   // Weather
@@ -49,7 +50,7 @@ function App() {
         .addCardLike(id, token)
         .then((updatedCard) => {
           setClothingItems((cards) =>
-            cards.map((item) => (item._id === id ? updatedCard : item))
+            cards.map((item) => (item._id === id ? updatedCard.data : item))
           );
         })
         .catch(console.error);
@@ -58,7 +59,7 @@ function App() {
         .removeCardLike(id, token)
         .then((updatedCard) => {
           setClothingItems((cards) =>
-            cards.map((item) => (item._id === id ? updatedCard : item))
+            cards.map((item) => (item._id === id ? updatedCard.data : item))
           );
         })
         .catch(console.error);
@@ -109,10 +110,31 @@ function App() {
     api
       .addItem({ name, imageUrl, weather })
       .then((newItem) => {
-        setClothingItems([newItem, ...clothingItems]);
+        setClothingItems((previtems) => [newItem.data, ...previtems]);
         closeActiveModal();
       })
       .catch(console.error);
+  };
+
+  //Submit
+  const handleSubmitRegister = ({ name, avatar, email, password }) => {
+    register({ name, avatar, email, password })
+      .then(({ name, _id, avatar }) => {
+        // setCurrentUser({ name, _id, avatar });
+        // setIsLoggedIn(true);
+        handleSubmitLogin({ email, password });
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
+
+  //Login
+  const handleSubmitLogin = ({ email, password }) => {
+    authorize({ email, password }).then(({ token }) => {
+      localStorage.setItem("jwt", token);
+      closeActiveModal();
+      setIsLoggedIn(true);
+    });
   };
 
   // Register / Login handlers
@@ -125,6 +147,18 @@ function App() {
       .then((data) => setWeatherData(filterWeatherData(data)))
       .catch(console.error);
   }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      checkToken(token)
+        .then(({ _id, name, avatar }) => {
+          setCurrentUser({ _id, name, avatar });
+          setIsLoggedIn(true);
+        })
+        .catch(console.error);
+    }
+  }, [isLoggedIn]);
 
   // Load clothing items
   useEffect(() => {
@@ -152,6 +186,7 @@ function App() {
     return children;
   };
 
+  // implement Edit Profile modal and its functionality
   return (
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -185,7 +220,6 @@ function App() {
                       onCardClick={handleCardClick}
                       clothingItems={clothingItems}
                       onAddNewClick={handleAddClick}
-                      currentUser={currentUser}
                       onEditProfileClick={() => setIsEditModalOpen(true)}
                       onSignOutClick={handleSignOut}
                       onCardLike={handleCardLike}
@@ -209,10 +243,12 @@ function App() {
             <RegisterModal
               isOpen={activeModal === "register"}
               onClose={closeActiveModal}
+              onRegister={handleSubmitRegister}
             />
             <LoginModal
               isOpen={activeModal === "login"}
               onClose={closeActiveModal}
+              onLogin={handleSubmitLogin}
             />
             <ConfirmDeleteModal
               isOpen={!!deleteModalId}

@@ -6,15 +6,14 @@ function Profile({
   clothingItems,
   onCardClick,
   onAddNewClick,
-  currentUser,
   onEditProfileClick,
   onSignOutClick,
+  onCardLike,
 }) {
   return (
     <div className="profile">
       <section className="profile__sidebar">
         <SideBar
-          currentUser={currentUser}
           onEditProfileClick={onEditProfileClick}
           onSignOutClick={onSignOutClick}
         />
@@ -25,7 +24,6 @@ function Profile({
           onCardClick={onCardClick}
           onAddNewClick={onAddNewClick}
           onCardLike={onCardLike}
-          currentUser={currentUser}
         />
       </section>
     </div>

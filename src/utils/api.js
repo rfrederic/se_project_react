@@ -14,10 +14,12 @@ export const getItems = async () => {
 };
 
 export const addItem = async (itemData) => {
+  const token = localStorage.getItem("jwt");
   const res = await fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(itemData),
   });
@@ -25,8 +27,26 @@ export const addItem = async (itemData) => {
 };
 
 export const deleteItem = async (id) => {
+  const token = localStorage.getItem("jwt");
   const res = await fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   });
   return checkResponse(res);
 };
+
+export const addCardLike = async (id) => {
+  const token = localStorage.getItem("jwt");
+  console.log(token);
+  const res = await fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return checkResponse(res);
+};
+
+// Implement removeCardLike function

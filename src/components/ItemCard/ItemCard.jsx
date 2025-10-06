@@ -1,8 +1,15 @@
 import "./ItemCard.css";
-import LikeIcone from "../../assets/logo.svg";
+import LikeIcone from "../../assets/Like_new.svg";
+import LikeIconeActive from "../../assets/Like_hover.svg";
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function ItemCard({ item, onCardClick, onCardLike, currentUser }) {
-  const isLiked = item.likes?.some((id) => id === currentUser._id);
+function ItemCard({ item, onCardClick, onCardLike }) {
+  const { currentUser } = useContext(CurrentUserContext);
+
+  const isLiked = item.likes?.some(
+    (id) => currentUser && id === currentUser._id
+  );
 
   const handleLike = (e) => {
     e.stopPropagation();
@@ -18,12 +25,9 @@ function ItemCard({ item, onCardClick, onCardLike, currentUser }) {
         src={item.imageUrl || item.link}
         alt={item.name}
       />
-      {currentUser._id && (
-        <button
-          className={`card__like-button ${isLiked ? "liked" : ""}`}
-          onClick={handleLike}
-        >
-          <img src={LikeIcone} alt="like-btn" className="card__like-button" />
+      {currentUser && currentUser._id && (
+        <button className={`card__like-button`} onClick={handleLike}>
+          <img src={isLiked ? LikeIconeActive : LikeIcone} alt="like-btn" />
         </button>
       )}
     </li>

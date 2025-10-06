@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
@@ -7,6 +7,7 @@ import logo from "../../assets/logo.svg";
 import avatar from "../../assets/bre_avtar.png";
 import close__btn from "../../assets/close.svg";
 import menu from "../../assets/menu.svg";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function Header({
   handleAddClick,
@@ -14,6 +15,8 @@ function Header({
   onRegisterClick,
   onLoginClick,
 }) {
+  const { currentUser } = useContext(CurrentUserContext);
+
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
 
   const toggleMobileMenu = () => setIsMobileMenuOpened((prev) => !prev);
@@ -36,26 +39,32 @@ function Header({
       <div className="header__toggle-switch-container">
         <ToggleSwitch />
       </div>
-
-      <button
-        onClick={handleAddClick}
-        type="button"
-        className="header__add-clothes-btn"
-      >
-        + Add clothes
-      </button>
-
-      <div className="header__auth-buttons">
-        <button onClick={onRegisterClick}>Register</button>
-        <button onClick={onLoginClick}>Login</button>
-      </div>
-
-      <Link to="/profile" className="header__link">
-        <div className="header__user-container">
-          <p className="header__username">Sabrina Frederic</p>
-          <img src={avatar} alt="Sabrina Frederic" className="header__avatar" />
+      {currentUser ? (
+        <>
+          <button
+            onClick={handleAddClick}
+            type="button"
+            className="header__add-clothes-btn"
+          >
+            + Add clothes
+          </button>
+          <Link to="/profile" className="header__link">
+            <div className="header__user-container">
+              <p className="header__username">{currentUser.name}</p>
+              <img
+                src={avatar}
+                alt="Sabrina Frederic"
+                className="header__avatar"
+              />
+            </div>
+          </Link>
+        </>
+      ) : (
+        <div className="header__auth-buttons">
+          <button onClick={onRegisterClick}>Register</button>
+          <button onClick={onLoginClick}>Login</button>
         </div>
-      </Link>
+      )}
 
       <button
         className="header__burger"
@@ -77,9 +86,11 @@ function Header({
           <li className="header__item mobile-only">
             <Link to="/">Home</Link>
           </li>
-          <li className="header__item mobile-only">
-            <Link to="/profile">Profile</Link>
-          </li>
+          {currentUser && (
+            <li className="header__item mobile-only">
+              <Link to="/profile">Profile</Link>
+            </li>
+          )}
         </ul>
       </nav>
     </header>

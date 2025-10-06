@@ -44,4 +44,9 @@
 .card__like-button:hover {
   transform: scale(1.1);
   background-image: url("../../assets/Like_hover.svg");
+  background-repeat: no-repeat;
+}
+
+.card__like-button:hover img {
+  display: none;
 }
