@@ -29,6 +29,7 @@ function RegisterModal({ isOpen, onClose, onRegister }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      className="register-modal"
     >
       <label className="modal__label">
         Name
@@ -72,6 +73,13 @@ function RegisterModal({ isOpen, onClose, onRegister }) {
           required
         />
       </label>
+      <button
+        type="button"
+        className="modal__alt-button"
+        onClick={onLoginClick}
+      >
+        Or Sign in
+      </button>
     </ModalWithForm>
   );
 }

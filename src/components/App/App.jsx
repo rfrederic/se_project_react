@@ -136,6 +136,16 @@ function App() {
       setIsLoggedIn(true);
     });
   };
+  const handleUpdateUser = (data) => {
+    const token = localStorage.getItem("jwt");
+    api
+      .updateUserInfo(data, token)
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser);
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
 
   // Register / Login handlers
   const handleRegisterClick = () => setActiveModal("register");
@@ -257,6 +267,11 @@ function App() {
                 handleDeleteItem(deleteModalId);
                 setDeleteModalId(null);
               }}
+            />
+            <EditProfileModal
+              isOpen={isEditModalOpen}
+              onClose={closeActiveModal}
+              onUpdateUser={handleUpdateUser}
             />
           </div>
         </div>

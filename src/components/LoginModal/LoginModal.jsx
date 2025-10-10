@@ -25,6 +25,7 @@ function LoginModal({ isOpen, onClose, onLogin }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      className="login-modal"
     >
       <label className="modal__label">
         Email
@@ -47,6 +48,13 @@ function LoginModal({ isOpen, onClose, onLogin }) {
           required
         />
       </label>
+      <button
+        type="button"
+        className="modal__alt-button"
+        onClick={onSignupClick}
+      >
+        Or Sign up
+      </button>
     </ModalWithForm>
   );
 }

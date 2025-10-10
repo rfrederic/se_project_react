@@ -1,0 +1,36 @@
+.login-modal .modal__container {
+  width: 360px;
+  padding: 24px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.login-modal .modal__label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: #333;
+}
+
+.login-modal .modal__input {
+  margin-top: 8px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.login-modal .modal__alt-button {
+  background: none;
+  border: none;
+  color: #4c6ef5;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.login-modal .modal__alt-button:hover {
+  color: #3651d4;
+}

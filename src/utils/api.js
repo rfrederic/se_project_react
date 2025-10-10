@@ -50,3 +50,17 @@ export const addCardLike = async (id) => {
 };
 
 // Implement removeCardLike function
+// Update user info
+export const updateUserInfo = (data, token) => {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      name: data.name,
+      avatar: data.avatar,
+    }),
+  }).then(checkResponse);
+};
