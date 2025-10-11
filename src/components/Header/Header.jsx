@@ -61,8 +61,8 @@ function Header({
         </>
       ) : (
         <div className="header__auth-buttons">
-          <button onClick={onRegisterClick}>Register</button>
-          <button onClick={onLoginClick}>Login</button>
+          <button onClick={onRegisterClick}>Sign Up</button>
+          <button onClick={onLoginClick}>Log In</button>
         </div>
       )}
 

@@ -92,6 +92,19 @@
   font-weight: 500;
 }
 
+.header__auth-buttons {
+  font-family: "Cabinet Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+
 @media (max-width: 768px) {
   .header {
     padding: 20px;
