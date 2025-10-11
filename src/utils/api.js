@@ -48,8 +48,15 @@ export const addCardLike = async (id) => {
   });
   return checkResponse(res);
 };
+export const removeCardLike = async (id) => {
+  const token = localStorage.getItem("jwt");
+  const res = await fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return checkResponse(res);
+};
 
-// Implement removeCardLike function
 // Update user info
 export const updateUserInfo = (data, token) => {
   return fetch(`${baseUrl}/users/me`, {
@@ -58,9 +65,6 @@ export const updateUserInfo = (data, token) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({
-      name: data.name,
-      avatar: data.avatar,
-    }),
+    body: JSON.stringify({ name: data.name, avatar: data.avatar }),
   }).then(checkResponse);
 };

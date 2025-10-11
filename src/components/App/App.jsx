@@ -24,6 +24,7 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { authorize, checkToken, register } from "../../utils/auth";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
 
 function App() {
   // Weather
@@ -142,7 +143,7 @@ function App() {
       .updateUserInfo(data, token)
       .then((updatedUser) => {
         setCurrentUser(updatedUser);
-        closeActiveModal();
+        setIsEditModalOpen(false);
       })
       .catch(console.error);
   };
@@ -254,11 +255,13 @@ function App() {
               isOpen={activeModal === "register"}
               onClose={closeActiveModal}
               onRegister={handleSubmitRegister}
+              onLoginClick={() => setActiveModal("login")}
             />
             <LoginModal
               isOpen={activeModal === "login"}
               onClose={closeActiveModal}
               onLogin={handleSubmitLogin}
+              onSignupClick={() => setActiveModal("register")}
             />
             <ConfirmDeleteModal
               isOpen={!!deleteModalId}
@@ -270,7 +273,7 @@ function App() {
             />
             <EditProfileModal
               isOpen={isEditModalOpen}
-              onClose={closeActiveModal}
+              onClose={() => setIsEditModalOpen(false)}
               onUpdateUser={handleUpdateUser}
             />
           </div>
