@@ -44,7 +44,7 @@
 
 .header__username {
   font-family: "Cabinet Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   margin: 0;
 }
 
@@ -103,6 +103,9 @@
   cursor: pointer;
   border: none;
   text-decoration: none;
+}
+.header__button {
+  border: none;
 }
 
 @media (max-width: 768px) {

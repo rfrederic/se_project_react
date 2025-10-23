@@ -1,7 +1,15 @@
+.sidebar__profile {
+  display: flex;
+  gap: 12px;
+  margin: 0;
+  padding-bottom: 39px;
+}
+
 .sidebar__username {
   font-family: "Cabinet Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   margin: 0;
+  padding-bottom: 39px;
 }
 
 .sidebar__avatar {
@@ -10,4 +18,19 @@
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid #ccc;
+}
+.sidebar__signout-btn {
+  height: 25px;
+  font-family: "Cabinet Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  border: none;
+  font-style: bold;
+}
+
+.sidebar__edit-btn {
+  height: 25px;
+  font-family: "Cabinet Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  border: none;
+  font-style: bold;
 }

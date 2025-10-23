@@ -25,11 +25,13 @@ function RegisterModal({ isOpen, onClose, onRegister, onLoginClick }) {
   return (
     <ModalWithForm
       title="Sign Up"
-      buttonText="Register"
+      buttonText="Sign Up"
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
       className="register-modal"
+      secondaryButtonAction={onLoginClick}
+      secondaryButtonText="Log In"
     >
       <label className="modal__label">
         Name
@@ -73,13 +75,13 @@ function RegisterModal({ isOpen, onClose, onRegister, onLoginClick }) {
           required
         />
       </label>
-      <button
+      {/* <button
         type="button"
         className="modal__alt-button"
         onClick={onLoginClick}
       >
-        Or Sign in
-      </button>
+        Or Log In
+      </button> */}
     </ModalWithForm>
   );
 }

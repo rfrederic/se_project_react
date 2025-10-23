@@ -52,8 +52,8 @@ function Header({
             <div className="header__user-container">
               <p className="header__username">{currentUser.name}</p>
               <img
-                src={avatar}
-                alt="Sabrina Frederic"
+                src={currentUser.avatar || avatar}
+                alt={currentUser.name || "User avatar"}
                 className="header__avatar"
               />
             </div>
@@ -61,8 +61,12 @@ function Header({
         </>
       ) : (
         <div className="header__auth-buttons">
-          <button onClick={onRegisterClick}>Sign Up</button>
-          <button onClick={onLoginClick}>Log In</button>
+          <button className="header__button" onClick={onRegisterClick}>
+            Sign Up
+          </button>
+          <button className="header__button" onClick={onLoginClick}>
+            Log In
+          </button>
         </div>
       )}
 

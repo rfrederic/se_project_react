@@ -26,6 +26,8 @@ function LoginModal({ isOpen, onClose, onLogin, onSignupClick }) {
       onClose={onClose}
       onSubmit={handleSubmit}
       className="login-modal"
+      secondaryButtonAction={onSignupClick}
+      secondaryButtonText={"Sign up"}
     >
       <label className="modal__label">
         Email
@@ -48,13 +50,13 @@ function LoginModal({ isOpen, onClose, onLogin, onSignupClick }) {
           required
         />
       </label>
-      <button
+      {/* <button
         type="button"
         className="modal__alt-button"
         onClick={onSignupClick}
       >
         Or Sign up
-      </button>
+      </button> */}
     </ModalWithForm>
   );
 }

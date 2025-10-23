@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3001";
+import { baseUrl } from "./constants";
 
 export const checkResponse = async (res) => {
   if (!res.ok) {

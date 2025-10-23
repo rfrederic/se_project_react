@@ -5,6 +5,11 @@ import sneakersImg from "../assets/sneakers.png";
 import coatImg from "../assets/coat.png";
 import jacketImg from "../assets/jacket.png";
 
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wearapp.jumpingcrab.com"
+    : "http://localhost:3001";
+
 export const defaultClothingItems = [
   {
     _id: 0,
